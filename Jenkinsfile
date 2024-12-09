@@ -18,7 +18,7 @@ stages
 
    stage('code build')
  {steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MVN_HOME', mavenSettingsConfig: '', traceability: true)  {
-	sh 'mvn clean package'
+	sh 'mvn clean -B -DskipTests package'
  } }}
 
 

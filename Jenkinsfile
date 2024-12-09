@@ -21,6 +21,11 @@ stages
 	sh 'mvn clean -B -DskipTests package'
  } }}
 
+   stage('deploy to tomcat')
+ {steps { sshagent(['DEVCICD']) {
+    sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@43.204.229.147:/usr/share/tomcat/webapps'
+}
+ }}
 
 }
 }
